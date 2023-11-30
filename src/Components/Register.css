@@ -1,0 +1,35 @@
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.input-group {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.text {
+  font-weight: bold;
+  color: #333;
+}
+
+.normal-input {
+  padding: 5px; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.normal-input.invalid {
+  border-color: red;
+}
+
+.validation-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

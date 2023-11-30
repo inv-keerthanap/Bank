@@ -1,0 +1,24 @@
+.container {
+    margin-top: 50px;
+  }
+
+  .custom-space {
+    margin-right: 10px;
+  }
+ 
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.pagination-button.active {
+  background-color: #007bff;
+  color: #ffffff; 
+}

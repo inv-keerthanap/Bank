@@ -1,0 +1,72 @@
+
+
+.login-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+
+.left-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.left-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.right-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-left: 20px; 
+}
+
+.text {
+  font-weight: bold;
+  color: #333;
+}
+
+.normal-input {
+  margin-bottom: 15px; 
+  padding: 15px; 
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.normal-input.invalid {
+  border-color: red;
+}
+
+.validation-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.btn-primary {
+  background-color: #28a745;
+  color: #fff;
+  padding: 15px 20px; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.success {
+  color: green;
+  margin-bottom: 15px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 15px;
+}
