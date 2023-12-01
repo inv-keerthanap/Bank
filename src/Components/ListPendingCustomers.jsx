@@ -77,7 +77,7 @@ function ListPendingCustomers() {
     <>
       <Dashboard>
       <div className="container">
-  <h3 className="text-center"><i>Pending Customers</i></h3>
+ <center> <h3 className="text-center"><i>Pending Customers</i></h3>
   <div className="row mt-4">
     <div className="col-md-10 offset-md-1">
       {pendingCustomers.length > 0 ? (
@@ -141,6 +141,7 @@ function ListPendingCustomers() {
       </div>
     </div>
   </div>
+  </center>
 </div>
 
       </Dashboard>

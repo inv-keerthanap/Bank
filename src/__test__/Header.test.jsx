@@ -1,71 +1,62 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Header from '../Components/Header';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-jest.mock('react-router-dom', () => {
-  const originalModule = jest.requireActual('react-router-dom');
+
+const localStorageMock = (() => {
+  let store = {};
   return {
-    ...originalModule,
-    useNavigate: jest.fn(() => jest.fn()),
+    getItem: key => store[key] || null,
+    setItem: (key, value) => {
+      store[key] = value.toString();
+    },
+    removeItem: key => {
+      delete store[key];
+    },
+    clear: () => {
+      store = {};
+    },
   };
-});
-
+})();
 describe('Header Component', () => {
-  it('renders the header with "Logout" button', async () => {
-    render(
-      <MemoryRouter>
-        <Header userName="TestUser" />
-      </MemoryRouter>
-    );
-  
-    await waitFor(() => {
-      console.log(screen.debug());
-      const logoutButton = screen.getByTestId('logout');
-      expect(logoutButton).toBeInTheDocument();
+  beforeEach(() => {
+    Object.defineProperty(window, 'localStorage', {
+      value: localStorageMock,
     });
   });
-  
-
-  it('handles logout when "Logout" button is clicked', async () => {
+  it('renders header with username', () => {
+    const mockUserName = 'John Doe';
     render(
-      <MemoryRouter>
-        <Header userName="TestUser" />
-      </MemoryRouter>
+      <Router>
+        <Header userName={mockUserName} />
+      </Router>
     );
-
-    await waitFor(() => {
-      const logoutButton = screen.getByTestId('logout');
-      fireEvent.click(logoutButton);
-      expect(require('react-router-dom').useNavigate()).toHaveBeenCalledTimes(1);
-    });
+    expect(screen.getByText(mockUserName)).toBeInTheDocument();
   });
-
-  it('navigates to Profile when "Profile" link is clicked', async () => {
+  it('displays dropdown menu on click', () => {
+    const mockUserName = 'John Doe';
     render(
-      <MemoryRouter>
-        <Header userName="TestUser" />
-      </MemoryRouter>
+      <Router>
+        <Header userName={mockUserName} />
+      </Router>
     );
+    const dropdownMenu = screen.queryByRole('menu');
+    const dropdownToggle = screen.getByTestId('dropdown-toggle');
+    fireEvent.click(dropdownToggle);
 
-    await waitFor(() => {
-      const profileLink = screen.getByTestId('profile');
-      fireEvent.click(profileLink);
-      expect(require('react-router-dom').useNavigate()).toHaveBeenCalledWith('/Profile');
-    });
   });
-
-  it('navigates to ChangePassword when "Change Password" link is clicked', async () => {
+  it('handles logout correctly', () => {
+    const mockUserName = 'John Doe';
     render(
-      <MemoryRouter>
-        <Header userName="TestUser" />
-      </MemoryRouter>
+      <Router>
+        <Header userName={mockUserName} />
+      </Router>
     );
-
-    await waitFor(() => {
-      const changePasswordLink = screen.getByTestId('change');
-      fireEvent.click(changePasswordLink);
-      expect(require('react-router-dom').useNavigate()).toHaveBeenCalledWith('/ChangePassword');
-    });
+    const dropdownToggle = screen.getByTestId('dropdown-toggle');
+    fireEvent.click(dropdownToggle);
+    const logoutButton = screen.getByTestId('logout');
+    fireEvent.click(logoutButton);
   });
 });

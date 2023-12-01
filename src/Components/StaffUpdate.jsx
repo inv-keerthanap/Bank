@@ -160,7 +160,7 @@ function StaffUpdate() {
   return (
     <Dashboard>
       <div className="container mt-4">
-        <h3 className="text-center"><i>Staff Updation</i></h3>
+        <center><h3 className="text-center"><i>Staff Updation</i></h3>
         <div className="row justify-content-center">
           <div className="col-md-8">
             <form onSubmit={handleSubmit}>
@@ -295,6 +295,7 @@ function StaffUpdate() {
             </form>
           </div>
         </div>
+        </center>
       </div>
     </Dashboard>
   );

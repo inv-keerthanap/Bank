@@ -23,10 +23,10 @@ function Header({ userName }) {
     <header>
       <div className="navbar d-flex justify-content-end">
         <Dropdown show={dropdownVisible} onToggle={toggleDropdown}>
-          <Dropdown.Toggle as="a" className="nav-link dropdown-toggle" id="navbarDropdown">
-          <FontAwesomeIcon icon={faUser}/>
-            {userName && <span className="username">{userName}</span>}
-           
+        <Dropdown.Toggle as="a" className="nav-link dropdown-toggle" id="navbarDropdown" data-testid="dropdown-toggle">
+        <FontAwesomeIcon icon={faUser}/>
+        {userName && <span className="username">{userName}</span>}
+
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item as={Link} to="/Profile" data-testid="profile">

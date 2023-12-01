@@ -250,8 +250,9 @@ function Register() {
       </div>
       <div className="right-content">
         <h3>Register</h3>
-        <div className="input-container">
-          <div className="input-group">
+        <div className="row">
+            <div className="col-md-6">
+
           <label  className="text" htmlFor="firstName">First Name:</label>
            
             <input
@@ -270,7 +271,7 @@ function Register() {
               </span>
             )}
           </div>
-          <div className="input-group">
+          <div className="col-md-6">
             <label className="text">Last Name</label>
             <input
               type="text"
@@ -289,8 +290,8 @@ function Register() {
           </div>
         </div>
 
-        <div className="input-container">
-          <div className="input-group">
+        <div className="row">
+            <div className="col-md-6">
             <label className="text">Email</label>
             <input
               type="email"
@@ -307,7 +308,7 @@ function Register() {
               </span>
             )}
           </div>
-          <div className="input-group">
+          <div className="col-md-6">
             <label className="text">Phone Number</label>
             <input
               type="text"
@@ -326,8 +327,8 @@ function Register() {
           </div>
         </div>
 
-        <div className="input-container">
-          <div className="input-group">
+        <div className="row">
+            <div className="col-md-6">
             <label className="text">UserName</label>
             <input
               type="text"
@@ -344,7 +345,7 @@ function Register() {
               </span>
             )}
           </div>
-          <div className="input-group">
+          <div className="col-md-6">
             <label className="text">Address</label>
             <textarea
               name="address"  data-testid="address"
@@ -362,25 +363,25 @@ function Register() {
           </div>
         </div>
 
-        <div className="input-container">
-          <div className="input-group">
-            <label className="text">Pincode</label>
+        <div className="row">
+            <div className="col-md-6">
+            <label className="text">UserName</label>
             <input
               type="text"
-              name="pincode" data-testid="pincode"
-              className={`normal-input ${!pinCodeValid ? "invalid" : ""}`}
-              value={pinCode}
-              onChange={handlePinCodeChange}
-              placeholder="Enter Your Postal Code"
+              name="username"  data-testid="username"
+              className={`normal-input ${!usernameValid ? "invalid" : ""}`}
+              value={username}
+              onChange={handleUsernameChange}
+              placeholder="Enter Your username"
               required
             />
-            {!pinCodeValid && (
+            {!usernameValid && (
               <span className="validation-message">
-                PIN code should only contain numeric digits and be exactly 6 digits long.
+                Username should only contain alphanumeric characters and be 3 to 20 characters long.
               </span>
             )}
           </div>
-          <div className="input-group">
+          <div className="col-md-6">
             <label className="text">Date of Birth</label>
             <input
       type="date"
@@ -404,8 +405,8 @@ function Register() {
   </div>
         </div>
 
-        <div className="input-container">
-          <div className="input-group">
+        <div className="row">
+            <div className="col-md-6">
             <label className="text">Password</label>
             <input
               type="password"  data-testid="password-input"
@@ -423,7 +424,7 @@ function Register() {
             )}
           </div>
 
-          <div className="input-group">
+          <div className="col-md-6">
             <label className="text">Confirm Password</label>
             <input
               type="password" data-testid="confirmpassword-input"

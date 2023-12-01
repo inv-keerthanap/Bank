@@ -22,7 +22,7 @@ function Profile() {
 
   return (
     <Dashboard>
-      <h4><center>Profile Information</center></h4>
+      <h4><center><i>Profile Information</i></center></h4>
       <section style={{ backgroundColor: "#eee" }}>
         <div className="container py-5">
           <div className="row">
